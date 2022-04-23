@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/flowerguesser/static/css/main.7e93d86c.css",
+    "main.js": "/flowerguesser/static/js/main.63b0f495.js",
+    "static/js/787.6251adda.chunk.js": "/flowerguesser/static/js/787.6251adda.chunk.js",
+    "index.html": "/flowerguesser/index.html",
+    "main.7e93d86c.css.map": "/flowerguesser/static/css/main.7e93d86c.css.map",
+    "main.63b0f495.js.map": "/flowerguesser/static/js/main.63b0f495.js.map",
+    "787.6251adda.chunk.js.map": "/flowerguesser/static/js/787.6251adda.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7e93d86c.css",
+    "static/js/main.63b0f495.js"
+  ]
+}
