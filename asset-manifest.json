@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/plantguesser/static/css/main.909240e4.css",
-    "main.js": "/plantguesser/static/js/main.bd3363b7.js",
+    "main.css": "/plantguesser/static/css/main.ca0201bf.css",
+    "main.js": "/plantguesser/static/js/main.dc7ce152.js",
     "static/js/787.c4df83e1.chunk.js": "/plantguesser/static/js/787.c4df83e1.chunk.js",
     "static/media/chubkeyicon.jpeg": "/plantguesser/static/media/chubkeyicon.5660be0db159477a4632.jpeg",
     "index.html": "/plantguesser/index.html",
-    "main.909240e4.css.map": "/plantguesser/static/css/main.909240e4.css.map",
-    "main.bd3363b7.js.map": "/plantguesser/static/js/main.bd3363b7.js.map",
+    "main.ca0201bf.css.map": "/plantguesser/static/css/main.ca0201bf.css.map",
+    "main.dc7ce152.js.map": "/plantguesser/static/js/main.dc7ce152.js.map",
     "787.c4df83e1.chunk.js.map": "/plantguesser/static/js/787.c4df83e1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.909240e4.css",
-    "static/js/main.bd3363b7.js"
+    "static/css/main.ca0201bf.css",
+    "static/js/main.dc7ce152.js"
   ]
 }
