@@ -1,6 +1,6 @@
 {
-  "name": "flowerguesser",
-  "homepage": "https://ravager6969.github.io/flowerguesser/",
+  "name": "plantguesser",
+  "homepage": "https://ravager6969.github.io/plantguesser/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
