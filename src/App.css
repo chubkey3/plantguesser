@@ -34,7 +34,7 @@ body {
   width: 100%;
   height: 12vh;
   background-color: var(--main);
-  color: var(--accent);
+  color: black;
 }
 
 img {
@@ -46,8 +46,10 @@ img {
 .imagecontainer {
   margin: 5vh;
   background-color: var(--main);
-  padding: 10px;
+  padding: 6px;
   border-radius: 10px;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .buttons {
@@ -57,7 +59,7 @@ img {
   justify-content: space-evenly;
 }
 
-button {
+.guessbuttons {
   outline: none;
   border: none;
   color: white;
@@ -70,4 +72,106 @@ button {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   cursor: pointer;
   transition: all 0.2s ease-out;
+}
+
+.score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+}
+
+h2 {
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  color: var(--accent);
+}
+
+.plantviewcontainer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  max-width: 30vw;
+  max-height: 25vh;
+  right: 0;
+  bottom: 0;
+  margin: 10px;
+  margin-bottom: 0;
+}
+
+a {
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: bold;
+  margin: 5px;
+  cursor: pointer;;
+}
+
+.plantviewimgcontainer {
+  height: 15vh;
+}
+
+.plantviewimgcontainer img {
+  object-fit: cover;
+  border-radius: 10%;
+}
+
+.plantviewcontainer p {
+  font-size: 10px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.imagedots {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  margin: 0; 
+}
+
+.dot {
+  width: 15px;
+  height: 15px;
+  background-color: var(--main);
+  margin: 3px;
+  border-radius: 100%;
+}
+
+.incrementcontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.incrementbuttons {
+    width: 10%;
+    margin: 5px;
+    font-size: 15px;
+    border-radius: 10%;
+    outline: none;
+    border: none;
+    background-color: var(--main);
+    color: var(--accent);
+}
+
+.github {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 400px){
+    .guessbuttons {
+      width: 30%;
+      font-size: 12px;
+    }
+
+    .incrementbuttons {
+      border-radius: 20%;
+    }
 }
