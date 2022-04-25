@@ -100,6 +100,7 @@ function Imgdisplay(){
             Setpreviousimgsrc(imagesrc[imageindex]);
             Setpreviousimglink(imagelink);
             setTimeout(load, 2000);
+            document.getElementById('togglepopup').style.display = "initial";
         }
     } 
 
