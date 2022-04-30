@@ -93,19 +93,18 @@ h2 {
   position: absolute;
   display: flex;
   flex-direction: column;
-  max-width: 50vw;
-  max-height: 50vh;
+  width: fit-content;
+  height: fit-content;
   left: 0;
   right: 0;
   bottom: 0;
   top: 0;
   margin: auto;
   background-color: var(--main);
-  border: 1px solid rgba(0, 0, 0, 0.5);
   padding-left: 30px;
   padding-right: 30px;
   padding-top: 10px;
-  padding-bottom: 0px;
+  padding-bottom: 15px;
   border-radius: 15px;
   z-index: 2;
   display: none;
@@ -124,35 +123,40 @@ a {
 }
 
 .plantviewimgcontainer {
-  height: 40vh;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  max-height: 50vh;
   margin-bottom: 10px;
 }
 
 .plantviewimgcontainer img {
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 10%;
 }
 
 .plantviewcontainer p {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
 .plantviewcontainer button {
+  display: flex;
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 2px;
+  top: 2px;
   border-radius: 100%;
   border: none;
   background-color: var(--accent);
   color: white;
   font-size: 15px;
   font-weight: bolder;
-  margin: 2px;
   width: 30px;
   height: 30px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .imagedots {
@@ -225,5 +229,9 @@ a {
 
     .incrementbuttons {
       border-radius: 20%;
+    }
+
+    .plantviewcontainer {
+      max-width: 50vw;
     }
 }

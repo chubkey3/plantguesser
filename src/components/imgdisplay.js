@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState } from "react";
+import {useState, useEffect } from "react";
 import data from '../data/flowers3.json';
 import Plantview from './plantview';
 
@@ -136,8 +136,12 @@ function Imgdisplay(){
         setTimeout(function(){document.getElementById('dot0').style.backgroundColor = "var(--accent)";}, 500);
     }
 
-    window.addEventListener('load', load);
-    window.addEventListener('load', loadfirstdot);
+    //window.addEventListener('DOMContentLoaded', load);
+    //load();
+    useEffect(() => {
+        load();
+        loadfirstdot();
+    }, []);
 
     return (
         <>  
