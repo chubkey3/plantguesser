@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/plantguesser/static/css/main.ca0201bf.css",
-    "main.js": "/plantguesser/static/js/main.dc7ce152.js",
-    "static/js/787.c4df83e1.chunk.js": "/plantguesser/static/js/787.c4df83e1.chunk.js",
-    "static/media/chubkeyicon.jpeg": "/plantguesser/static/media/chubkeyicon.5660be0db159477a4632.jpeg",
-    "index.html": "/plantguesser/index.html",
-    "main.ca0201bf.css.map": "/plantguesser/static/css/main.ca0201bf.css.map",
-    "main.dc7ce152.js.map": "/plantguesser/static/js/main.dc7ce152.js.map",
-    "787.c4df83e1.chunk.js.map": "/plantguesser/static/js/787.c4df83e1.chunk.js.map"
+    "main.css": "/static/css/main.ca0201bf.css",
+    "main.js": "/static/js/main.7a95d27c.js",
+    "static/js/787.c4df83e1.chunk.js": "/static/js/787.c4df83e1.chunk.js",
+    "static/media/chubkeyicon.jpeg": "/static/media/chubkeyicon.5660be0db159477a4632.jpeg",
+    "index.html": "/index.html",
+    "main.ca0201bf.css.map": "/static/css/main.ca0201bf.css.map",
+    "main.7a95d27c.js.map": "/static/js/main.7a95d27c.js.map",
+    "787.c4df83e1.chunk.js.map": "/static/js/787.c4df83e1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ca0201bf.css",
-    "static/js/main.dc7ce152.js"
+    "static/js/main.7a95d27c.js"
   ]
 }
