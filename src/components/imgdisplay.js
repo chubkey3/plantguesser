@@ -25,16 +25,41 @@ function randomInt() {
     return p;
 }
 
+function loadrightanswers(){
+    let right = localStorage.getItem('rightanswers');
+    
+
+    if (right === null){
+        localStorage.setItem('rightanswers', '0')
+        
+        right = '0';
+        
+    }
+    return Number(right);
+}
+
+function loadanswers(){
+    let answers = localStorage.getItem('answers');
+
+    if (answers === null){
+        localStorage.setItem('answers', '0.0000000000001');
+        answers = '0.0000000000001';
+    }
+
+    return Number(answers);
+}
+
 function Imgdisplay(){
     const [imagename, setImagename] = useState(0);
     const [imagesrc, setImagesrc] = useState([]);
     const [imagelink, setImagelink] = useState(0);
-    const [rightanswers, setRightanswer] = useState(0);
-    const [answers, setAnswers] = useState(0.00000000001);
+    const [rightanswers, setRightanswer] = useState(loadrightanswers());
+    const [answers, setAnswers] = useState(loadanswers());
     const [previousimgname, Setpreviousimgname] = useState("");
     const [previousimgsrc, Setpreviousimgsrc] = useState("");
     const [previousimglink, Setpreviousimglink] = useState("");
     const [imageindex, Setimageindex] = useState(0);
+    
     const load = () => {
         Setimageindex(0);
         let m = Object.keys(data).length;
@@ -78,11 +103,13 @@ function Imgdisplay(){
         if (e.target.style.backgroundColor === 'var(--accent)'){
             if (e.target.innerHTML === imagename){
                 console.log('right!');
+                localStorage.setItem('rightanswers', String(rightanswers + 1));
                 setRightanswer(rightanswers + 1);
             } else {
                 console.log('wrong!');
             }
 
+            localStorage.setItem('answers', answers + 1);
             setAnswers(answers + 1);
 
             e.target.style.transform = 'scale(1.1)';
@@ -136,8 +163,19 @@ function Imgdisplay(){
         setTimeout(function(){document.getElementById('dot0').style.backgroundColor = "var(--accent)";}, 500);
     }
 
-    //window.addEventListener('DOMContentLoaded', load);
-    //load();
+    const resetscore = () => {
+        localStorage.setItem('rightanswers', '0');
+        localStorage.setItem('answers', '0.0000000000001');
+
+        document.getElementById('scoredisplay').style.opacity = 0;
+    
+        setTimeout(function(){
+            document.getElementById('scoredisplay').style.opacity = 1;
+            setRightanswer(0);
+            setAnswers(0.0000000000001);
+        }, 500);
+    }
+
     useEffect(() => {
         load();
         loadfirstdot();
@@ -162,9 +200,10 @@ function Imgdisplay(){
                 <button className='guessbuttons' id='2' onClick={(e) => guess(e)}></button>
                 <button className='guessbuttons' id='3' onClick={(e) => guess(e)}></button>
             </div>
-            <div className='score'>
+            <div id='scoredisplay' className='score'>
                 <h2>{((rightanswers/answers)*100).toFixed(2) + "%"}</h2>
             </div>
+            <button className='resetbutton' onClick={resetscore}><img src={require('../assets/restart-icon-18-256.png')}></img></button>
             <Plantview plantname={previousimgname} plantimg={previousimgsrc} plantsrc={previousimglink}></Plantview>
         </>
     )

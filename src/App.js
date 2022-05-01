@@ -17,7 +17,7 @@ function App() {
           <button id='togglepopup' className='togglepopup' onClick={toggle}><img src={require('./assets/plant.png')}></img></button>
         </div>
         <Imgdisplay></Imgdisplay>
-        <a href='https://github.com/ravager6969/plantguesser' className='github' target='_blank' rel='noreferrer'><i className='fa fa-github' style={{fontSize: "24px"}}></i></a>
+        <a href='https://github.com/ravager6969/plantguesser' className='github'><i className='fa fa-github' style={{fontSize: "35px"}}></i></a>
         
       </div>
     </>

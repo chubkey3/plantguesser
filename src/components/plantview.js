@@ -17,7 +17,7 @@ function Plantview(props) {
             <div className='plantviewimgcontainer'>
                 <img id='plantviewimage' src={props.plantimg} alt={"You must guess a plant first."} onError={errorimg}></img>
             </div>
-            <a href={props.plantsrc} target="_blank" rel='noreferrer'>View Plant</a>
+            <a href={props.plantsrc}>View Plant</a>
         </div>
     )
 }

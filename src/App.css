@@ -80,6 +80,7 @@ img {
     align-items: center;
     text-align: center;
     margin: 0;
+    transition: opacity 0.5s ease-out;
 }
 
 h2 {
@@ -194,10 +195,18 @@ a {
 }
 
 .github {
+  display: flex;
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: 5px;
+  left: 5px;
   cursor: pointer;
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+  padding: 0;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .togglepopup {
@@ -219,6 +228,24 @@ a {
   z-index: 1;
   backdrop-filter: blur(4px);
   display: none;
+}
+
+.resetbutton {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: var(--accent);
+  color: white;
+  cursor: pointer;
+}
+
+.resetbutton img {
+  transform: rotate(50deg);
+  object-fit: contain;
 }
 
 @media screen and (max-width: 400px){
