@@ -1,6 +1,5 @@
 {
   "name": "plantguesser",
-  "homepage": "https://chubkey.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
