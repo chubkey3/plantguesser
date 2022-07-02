@@ -4,6 +4,10 @@ import data from '../data/flowers3.json';
 import Plantview from './plantview';
 
 var seen = [];
+var timer;
+var delay = 2000;
+var highscore = loadhighscore();
+var timeractive = false;
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -49,25 +53,36 @@ function loadanswers(){
     return Number(answers);
 }
 
+function loadhighscore(){
+    let highscore = localStorage.getItem('highscore');
+
+    if (highscore === null){
+        localStorage.setItem('highscore', '0');
+        highscore = 0;
+    }
+
+    return Number(highscore);
+}
+
 function Imgdisplay(){
     const [imagename, setImagename] = useState(0);
-    const [imagesrc, setImagesrc] = useState([]);
+    const [imagesrc, setImagesrc] = useState();
     const [imagelink, setImagelink] = useState(0);
     const [rightanswers, setRightanswer] = useState(loadrightanswers());
     const [answers, setAnswers] = useState(loadanswers());
     const [previousimgname, Setpreviousimgname] = useState("");
     const [previousimgsrc, Setpreviousimgsrc] = useState("");
     const [previousimglink, Setpreviousimglink] = useState("");
-    const [imageindex, Setimageindex] = useState(0);
-    
+    const [timerscore, Settimerscore] = useState(0);
+
     const load = () => {
-        Setimageindex(0);
         let m = Object.keys(data).length;
         let k = randomInt();
         setImagename(Object.keys(data)[k]);
-        setImagesrc(data[Object.keys(data)[k]]["imgs"]);
+        setImagesrc(data[Object.keys(data)[k]]);
         setImagelink(data[Object.keys(data)[k]]["ref"]);
         let b = Math.floor(Math.random() * 3)+1;
+        console.log("Answer: "+b);
         document.getElementById(b).innerHTML = Object.keys(data)[k];
         for (let i = 1; i<4; i++){
             if (i !== b){
@@ -86,14 +101,6 @@ function Imgdisplay(){
 
         }
 
-        for (let i = 0; i<imagesrc.length; i++){
-            if (i === 0) {
-                document.getElementById("dot"+i).style.backgroundColor = "var(--accent)";    
-            } else {
-                document.getElementById("dot"+i).style.backgroundColor = "var(--main)";
-            }
-            
-        }
 
 
 
@@ -102,11 +109,11 @@ function Imgdisplay(){
     const guess = (e) => {
         if (e.target.style.backgroundColor === 'var(--accent)'){
             if (e.target.innerHTML === imagename){
-                console.log('right!');
                 localStorage.setItem('rightanswers', String(rightanswers + 1));
                 setRightanswer(rightanswers + 1);
-            } else {
-                console.log('wrong!');
+                if (timeractive === true){
+                    Settimerscore(timerscore + 1);
+                }
             }
 
             localStorage.setItem('answers', answers + 1);
@@ -124,40 +131,14 @@ function Imgdisplay(){
             }
 
             Setpreviousimgname(imagename);
-            Setpreviousimgsrc(imagesrc[imageindex]);
+            Setpreviousimgsrc(imagesrc);
             Setpreviousimglink(imagelink);
-            setTimeout(load, 2000);
+            setTimeout(load, delay);
             document.getElementById('togglepopup').style.display = "initial";
         }
-    } 
-
-    const increment = (e) => {
-        if (e.target.innerHTML === '&gt;'){
-            if (imageindex < (imagesrc.length - 1)){
-                for (let i = 0; i<imagesrc.length; i++){
-                    if (i === imageindex + 1) {
-                        document.getElementById("dot"+i).style.backgroundColor = "var(--accent)";    
-                    } else {
-                        document.getElementById("dot"+i).style.backgroundColor = "var(--main)";
-                    }
-                    
-                }
-                Setimageindex(imageindex + 1);
-            }
-        } else {
-            if (imageindex > 0) {
-                for (let i = 0; i<imagesrc.length; i++){
-                    if (i === imageindex - 1) {
-                        document.getElementById("dot"+i).style.backgroundColor = "var(--accent)";    
-                    } else {
-                        document.getElementById("dot"+i).style.backgroundColor = "var(--main)";
-                    }
-                    
-                }
-                Setimageindex(imageindex - 1);
-            }
-        }
     }
+
+    
 
     const loadfirstdot = () => {
         setTimeout(function(){document.getElementById('dot0').style.backgroundColor = "var(--accent)";}, 500);
@@ -176,6 +157,28 @@ function Imgdisplay(){
         }, 500);
     }
 
+    const starttimer = () => {
+        clearInterval(timer);
+        var time = 0;
+        delay = 500;
+        Settimerscore(Number(0));
+        timeractive = true;
+        timer = setInterval(function(){
+            document.documentElement.style.setProperty('--spin', time+'%');
+            time = time + (100/(5*20));
+            if (document.documentElement.style.getPropertyValue('--spin') === '100%'){
+                clearInterval(timer);
+                if (timerscore > highscore){
+                    localStorage.setItem('highscore', String(timerscore));
+                    highscore = loadhighscore();
+                }
+                delay = 2000;
+                timeractive = false;
+                
+            }
+        }, 50);
+    }
+
     useEffect(() => {
         load();
         loadfirstdot();
@@ -184,17 +187,11 @@ function Imgdisplay(){
     return (
         <>  
             <div className='imagecontainer'>
-                <img src={imagesrc[imageindex]} alt='Plant'></img>
+                <img src={imagesrc} alt='Plant'></img>
             </div>
-            <div className='imagedots'>
-                {imagesrc.map((x, i) => (
-                    <div id={"dot"+i} className='dot'></div>
-                ))}
-            </div>
-            <div className='incrementcontainer'>
-                <button className='incrementbuttons' onClick={increment}>&lt;</button>
-                <button className='incrementbuttons' onClick={increment}>&gt;</button>
-            </div>
+            
+            
+            
             <div className='buttons'>
                 <button className='guessbuttons' id='1' onClick={(e) => guess(e)}></button>
                 <button className='guessbuttons' id='2' onClick={(e) => guess(e)}></button>
@@ -203,7 +200,15 @@ function Imgdisplay(){
             <div id='scoredisplay' className='score'>
                 <h2>{((rightanswers/answers)*100).toFixed(2) + "%"}</h2>
             </div>
-            <button className='resetbutton' onClick={resetscore}><img src={require('../assets/restart-icon-18-256.png')}></img></button>
+            <button className='resetbutton' onClick={resetscore}><img src={require('../assets/restart-icon-18-256.png')} alt='Reset'></img></button>
+            <div className='scoredisplay'>
+            <div className='timerouter'>
+                <button onClick={starttimer} className='timerinner'>
+                    <div className='timerinnerinner'>{timerscore}</div>
+                </button>
+            </div>
+            <p>{"Best:" + highscore}</p>
+            </div>
             <Plantview plantname={previousimgname} plantimg={previousimgsrc} plantsrc={previousimglink}></Plantview>
         </>
     )
