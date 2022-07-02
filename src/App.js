@@ -14,7 +14,7 @@ function App() {
       <div className="App">
         <div className='title'>
           <h1>Plant Guesser</h1>
-          <button id='togglepopup' className='togglepopup' onClick={toggle}><img src={require('./assets/plant.png')}></img></button>
+          <button id='togglepopup' className='togglepopup' onClick={toggle}><img src={require('./assets/plant.png')} alt={'Plant Icon'}></img></button>
         </div>
         <Imgdisplay></Imgdisplay>
         <a href='https://github.com/ravager6969/plantguesser' className='github'><i className='fa fa-github' style={{fontSize: "35px"}}></i></a>
